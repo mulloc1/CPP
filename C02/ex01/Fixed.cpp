@@ -24,14 +24,11 @@ Fixed::Fixed(float const &raw)
   while (1)
   {
     if (temp > 255)
-    {
-      temp = temp2;
       break ;
-    }
     temp2 = temp;
     temp *= 10;
   }
-  this->raw += temp;
+  this->raw += temp2;
 }
 
 Fixed::Fixed(Fixed const &fixed)
