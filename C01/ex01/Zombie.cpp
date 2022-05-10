@@ -6,36 +6,36 @@ Zombie::Zombie()
 
 Zombie::Zombie(std::string name, int number)
 {
-  this->name = name;
-  this->number = number;
+  this->_name = name;
+  this->_number = number;
 }
 
 Zombie::~Zombie()
 {
-  std::cout << this->number << " " << this->name << " is died" << std::endl;
+  std::cout << this->_number << " " << this->_name << " is died" << std::endl;
 }
 
 void  Zombie::announce(void)
 {
-  std::cout << this->number << " " << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+  std::cout << this->_number << " " << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void  Zombie::setName(std::string name)
 {
-  this->name = name;
+  this->_name = name;
 }
 
 std::string Zombie::getName()
 {
-  return (this->name);
+  return (this->_name);
 }
 
 void  Zombie::setNumber(int number)
 {
-  this->number = number;
+  this->_number = number;
 }
 
 int Zombie::getNumber()
 {
-  return (this->number);
+  return (this->_number);
 }

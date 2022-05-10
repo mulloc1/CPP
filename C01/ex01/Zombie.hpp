@@ -6,8 +6,8 @@
 class	Zombie
 {
 	private:
-		std::string name;
-    int         number;
+		std::string _name;
+    int         _number;
 
 	public:
     Zombie();

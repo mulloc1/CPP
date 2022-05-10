@@ -18,9 +18,9 @@ void  Phonebook::ADD()
   std::cin >> phoneNumber;
   std::cout << "darkestSecret : ";
   std::cin >> darkestSecret;
-  contact[idx].contactInit(firstName, lastName, nickName, phoneNumber, darkestSecret);
-  idx = (idx + 1) % 8;
-  cnt++;
+  this->_contact[this->_idx].contactInit(firstName, lastName, nickName, phoneNumber, darkestSecret);
+  this->_idx = (this->_idx + 1) % 8;
+  this->_cnt++;
 }
 
 void	elementPrint(std::string str)
@@ -35,12 +35,12 @@ void	elementPrint(std::string str)
 
 void  Phonebook::phonebookPrint()
 {
-  for (int i = 0; i < 8 && i < cnt; i++)
+  for (int i = 0; i < 8 && i < this->_cnt; i++)
   {
-    elementPrint(contact[i].getFirstName());
-    elementPrint(contact[i].getLastName());
-    elementPrint(contact[i].getNickName());
-    elementPrint(contact[i].getPhoneNumber());
+    elementPrint(this->_contact[i].getFirstName());
+    elementPrint(this->_contact[i].getLastName());
+    elementPrint(this->_contact[i].getNickName());
+    elementPrint(this->_contact[i].getPhoneNumber());
 	  std::cout << "|";
     std::cout << std::endl;
   }
@@ -48,10 +48,10 @@ void  Phonebook::phonebookPrint()
 
 void  Phonebook::phonebookPrint(int idx)
 {
-  elementPrint(contact[idx].getFirstName());
-  elementPrint(contact[idx].getLastName());
-  elementPrint(contact[idx].getNickName());
-  elementPrint(contact[idx].getPhoneNumber());
+  elementPrint(_contact[idx].getFirstName());
+  elementPrint(_contact[idx].getLastName());
+  elementPrint(_contact[idx].getNickName());
+  elementPrint(_contact[idx].getPhoneNumber());
 	std::cout << "|";
   std::cout << std::endl;
 }

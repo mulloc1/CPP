@@ -2,34 +2,34 @@
 
 void  Contact::contactInit(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
-  this->firstName = firstName;
-  this->lastName = lastName;
-  this->nickName = nickName;
-  this->phoneNumber = phoneNumber;
-  this->darkestSecret = darkestSecret;
+  this->_firstName = firstName;
+  this->_lastName = lastName;
+  this->_nickName = nickName;
+  this->_phoneNumber = phoneNumber;
+  this->_darkestSecret = darkestSecret;
 }
 
 std::string Contact::getFirstName()
 {
-  return (this->firstName);
+  return (this->_firstName);
 }
 
 std::string Contact::getLastName()
 {
-  return (this->lastName);
+  return (this->_lastName);
 }
 
 std::string Contact::getNickName()
 {
-  return (this->nickName);
+  return (this->_nickName);
 }
 
 std::string Contact::getPhoneNumber()
 {
-  return (this->phoneNumber);
+  return (this->_phoneNumber);
 }
 
 std::string Contact::getDarkestSecret()
 {
-  return (this->darkestSecret);
+  return (this->_darkestSecret);
 }

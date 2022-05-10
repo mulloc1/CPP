@@ -6,9 +6,9 @@
 class Phonebook
 {
   private:
-   Contact  contact[8];  
-   int      idx;
-   int      cnt;
+   Contact  _contact[8];  
+   int      _idx;
+   int      _cnt;
 
   public:
    void ADD();

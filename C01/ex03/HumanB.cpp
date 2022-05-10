@@ -4,15 +4,15 @@ HumanB::~HumanB()
 {}
 
 HumanB::HumanB(std::string name)
-  : name(name), weapon(nullptr)
+  : _name(name), _weapon(nullptr)
 {}
 
 void  HumanB::attack()
 {
-  std::cout << this->name << " attack with their " << this->weapon->getType() << std::endl;
+  std::cout << this->_name << " attack with their " << this->_weapon->getType() << std::endl;
 }
 
 void  HumanB::setWeapon(Weapon &weapon)
 {
-  this->weapon = &weapon;
+  this->_weapon = &weapon;
 }

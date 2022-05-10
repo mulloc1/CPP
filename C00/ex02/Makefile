@@ -1,9 +1,9 @@
-NAME = megaphone
+NAME = ex02
 
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
+SRCS = test.cpp Account.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
