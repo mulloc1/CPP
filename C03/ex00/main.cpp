@@ -6,6 +6,9 @@ int main(void)
     ClapTrap B("B");
     ClapTrap C(A);
 
+    std::cout << "=========================" << std::endl;
+    B.beRepaired(10);
+    B.status();
     for (int i = 0; i < 11; i++)
     {
         std::cout << "=========================" << std::endl;
