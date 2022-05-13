@@ -2,34 +2,40 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
+#include <cstddef>
 
 class ClapTrap
 {
-  private:
-    std::string   name;
-    unsigned int  hitPoints;
-    unsigned int  energyPoints;
-    unsigned int  attackPoints;
+private:
+    std::string     _name;
+    unsigned int    _hitPoints;
+    unsigned int    _energyPoints;
+    unsigned int    _attackDamage;
 
-  public:
+public:
     ClapTrap();
     ClapTrap(std::string name);
-    ClapTrap(ClapTrap &claptrap);
+    ClapTrap(ClapTrap& dummy);
     ~ClapTrap();
-    ClapTrap& operator = (ClapTrap &claptrap);
+    ClapTrap& operator = (ClapTrap& dummy);
 
-    void  attack(const std::string& target);
-    void  takeDemage(unsigned int amount); 
-    void  beRepaired(unsigned int amount); 
+    void attack(const std::string& target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
 
-    void  setName(std::string& name);
+    void status();
+
+    void setName(std::string name);
+    void setHitPoints(unsigned int hitPoints);
+    void setEnergyPoints(unsigned int energyPoints);
+    void setAttackDamage(unsigned int attackDamage);
+
     std::string getName();
-    void  setHitPoints(unsigned int hitPoints);
     unsigned int getHitPoints();
-    void  setEnergyPoints(unsigned int energyPoints);
     unsigned int getEnergyPoints();
-    void  setAttackPoints(unsigned int attackPoints);
-    unsigned int getAttackPoints();
+    unsigned int getAttackDamage();
 };
+
+std::ostream& operator << (std::ostream& out, ClapTrap& dummy);
 
 #endif

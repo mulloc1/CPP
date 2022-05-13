@@ -2,33 +2,19 @@
 
 int main(void)
 {
-  ClapTrap A("A");
-  ClapTrap B("B");
+    ClapTrap A("A");
+    ClapTrap B("B");
+    ClapTrap C(A);
 
-  A.setAttackPoints(2);
-  B.setAttackPoints(3);
-
-  A.attack(B.getName());
-  B.takeDemage(A.getAttackPoints());
-
-  B.attack(A.getName());
-  A.takeDemage(B.getAttackPoints());
-  B.attack(A.getName());
-  A.takeDemage(B.getAttackPoints());
-  B.attack(A.getName());
-  A.takeDemage(B.getAttackPoints());
-  A.beRepaired(2);
-  A.takeDemage(B.getAttackPoints());
-  B.attack(A.getName());
-  A.takeDemage(B.getAttackPoints());
-  A.beRepaired(2);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  B.beRepaired(1);
-  return (0);
+    for (int i = 0; i < 11; i++)
+    {
+        std::cout << "=========================" << std::endl;
+        B.setAttackDamage(1);
+        B.attack(A.getName());
+        A.takeDamage(B.getAttackDamage());
+        A.status();
+        B.status();
+    }
+    std::cout << "=========================" << std::endl;
+    return (0);
 }
