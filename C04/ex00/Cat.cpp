@@ -23,7 +23,7 @@ Cat& Cat::operator = (const Cat& dummy)
     return (*this);
 }
 
-virtual void Cat::makeSound() const
+void Cat::makeSound() const
 {
     std::cout << this->getType() << " says mew-mew" << std::endl;
 }
