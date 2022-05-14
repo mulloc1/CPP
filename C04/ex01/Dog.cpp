@@ -3,6 +3,7 @@
 Dog::Dog()
 : Animal("Dog")
 {
+    this->_brain = new Brain();
     std::cout << "Dog default constructor called" << std::endl;
 }
 
@@ -14,6 +15,7 @@ Dog::Dog(const Dog& dummy)
 
 Dog::~Dog()
 {
+    delete this->_brain;
     std::cout << "Dog destructor called" << std::endl;
 }
 
