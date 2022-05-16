@@ -8,8 +8,7 @@ Cat::Cat()
 }
 
 Cat::Cat(const Cat& dummy)
-{
-    *this = dummy;
+{ *this = dummy;
     std::cout << "Cat copy constructor called" << std::endl;
 }
 

@@ -63,12 +63,12 @@ void Bureaucrat::decrement(int grade)
         throw excep;
     this->_grade += grade;
 }
-const char* Bureaucrat::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
 {
     return ("GradeTooHighException");
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
 {
     return ("GradeTooLowException");
 }
