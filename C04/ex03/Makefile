@@ -1,9 +1,9 @@
-NAME = ex00
+NAME = ex03
 
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

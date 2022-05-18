@@ -19,7 +19,7 @@ public:
     }
     Array& operator = (const Array& dummy)
     {
-        
+        this->_array
     }
 
 };
