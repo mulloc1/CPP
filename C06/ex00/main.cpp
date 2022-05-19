@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     if (argc == 1)
         return (0);
     C = new Convert(argv[1]);
-    std::cout << static_cast<double> (C->getData()) << std::endl;
+    C->display();
     delete C;
     return (0);
 } 

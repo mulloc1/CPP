@@ -3,7 +3,7 @@ NAME = ex00
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
