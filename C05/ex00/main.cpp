@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    Bureaucrat jaebae(150);
+    Bureaucrat jaebae("baejae", 150);
 
     std::cout << jaebae << std::endl;
 
