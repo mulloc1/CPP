@@ -1,4 +1,5 @@
 #include "MutantStack.hpp"
+#include <iostream>
 
 int main()
 {
@@ -16,7 +17,7 @@ int main()
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
-    msatck.push(0);
+    mstack.push(0);
 
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();
@@ -30,4 +31,4 @@ int main()
     }
     std::stack<int> s(mstack);
     return (0);
-}
+} 
