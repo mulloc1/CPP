@@ -32,14 +32,10 @@ Form::~Form()
 
 Form& Form::operator = (const Form& dummy)
 {
-    std::strig&   nameTemp = const_cast <std::string&> (this->_name);
-    unsigned int& signTemp = const_cast <unsigned int&> (this->_signGrade);
-    unsigned int& executeTemp = const_cast <unsigned int&> (this->_executeGrade);
-
-    nameTemp = dummy._name;
+    this->_name = dummy._name;
     this->_signAble = dummy._signAble;
-    signTemp = dummy._signGrade;
-    executeTemp = dummy._executeGrade;
+    this->_signGrade = dummy._signGrade;
+    this->_executeGrade = dummy._executeGrade;
     return (*this);
 }
 
@@ -65,9 +61,7 @@ const unsigned int& Form::getExecuteGrade()
 
 void Form::setName(const std::string& name)
 {
-    std::strig&   nameTemp = const_cast <std::string&> (this->_name);
- 
-    nameTemp = dummy._name;
+    this->_name = dummy._name;
 }
 
 void Form::setSignAble(const bool& signAble)
@@ -77,21 +71,12 @@ void Form::setSignAble(const bool& signAble)
 
 void Form::setSignGrade(const unsigned int& signGrade)
 {
-    unsigned int& signTemp = const_cast <unsigned int&> (this->_signGrade);
-
-    signTemp = dummy._signGrade;
+    this->_signGrade = dummy._signGrade;
 }
 
 void Form::setExecuteGrade(const unsigned int& executeGrade)
 {
-    unsigned int& executeTemp = const_cast <unsigned int&> (this->_executeGrade);
-
-    executeTemp = dummy._executeGrade;
-}
-
-void Form::signForm()
-{
-    if 
+    this->_executeGrade = dummy._executeGrade;
 }
 
 void Form::beSined();

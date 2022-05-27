@@ -1,11 +1,10 @@
 #include "Bureaucrat.hpp"
 
 int main(void)
-{
-    Bureaucrat jaebae("baejae", 150);
+{    
+    Bureaucrat jaebae("jaebae", 150);
 
     std::cout << jaebae << std::endl;
-
     try
     {
         //jaebae.decrement(150);
@@ -15,7 +14,6 @@ int main(void)
     {
         std::cout << e.what() << std::endl;
     }
-
     std::cout << jaebae << std::endl;
     return (0);
 }

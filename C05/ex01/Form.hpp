@@ -7,10 +7,10 @@
 class Form
 {
 private:
-    const std::string   _name;
-    bool                _signAble;
-    const unsigned int  _signGrade;
-    const unsigned int  _executeGrade;
+    std::string   _name;
+    bool          _signAble;
+    unsigned int  _signGrade;
+    unsigned int  _executeGrade;
 public:
     Form();
     Form(const std::string& name, const unsigned int& signGrade, const unsigned int& executeGrade);
@@ -28,7 +28,6 @@ public:
     void setSignGrade(const unsigned int& signGrade);
     void setExecuteGrade(const unsigned int& executeGrade);
 
-    void signForm();
     void beSined();
 
     class GradeTooHighException : public std::exception

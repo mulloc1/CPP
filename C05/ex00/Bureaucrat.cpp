@@ -1,16 +1,8 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-: _name("jaebae"), _grade(150)
-{
-    std::cout << "Bureaucrat Default constructor called" << std::endl;
-}
-
 Bureaucrat::Bureaucrat(const std::string& name, const int& grade)
-: _grade(grade)
+: _name(name), _grade(grade)
 {
-    std::string& temp = const_cast <std::string&> (this->_name);
-    temp = name;
     if (this->_grade > 150)
         throw Bureaucrat::GradeTooHighException();
     else if (this->_grade < 1)
@@ -35,7 +27,7 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& dummy)
     return (*this);
 }
 
-std::string Bureaucrat::getName()
+std::string const& Bureaucrat::getName() const
 {
     return (this->_name);
 }
