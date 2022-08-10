@@ -4,8 +4,8 @@ int	main(int argc, char *argv[])
 {
 	if (argc > 1)
 	{
-		for (int i = 1; argv[i] != NULL; i++)
-			for (int j = 0; argv[i][j] != '\0'; j++)
+		for (int i = 1; argv[i]; i++)
+			for (int j = 0; argv[i][j]; j++)
 				std::cout << static_cast<char>(toupper(argv[i][j]));
 	}
 	else if (argc == 1)
@@ -13,4 +13,3 @@ int	main(int argc, char *argv[])
 	std::cout << std::endl;
 	return (0);
 }
-
