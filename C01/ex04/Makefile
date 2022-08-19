@@ -1,7 +1,7 @@
 NAME = ex04
 
 CC = c++
-CFLAG = -Wall -Wextra -Werror -std=c++98
+CFLAG = -Wall -Wextra -Werror -std=c++98 -g
 
 SRCS = main.cpp
 

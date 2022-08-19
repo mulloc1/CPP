@@ -3,16 +3,13 @@
 
 int main(void)
 {
-  Zombie  Foo;
+  Zombie  Foo("Foo");
   Zombie  *Bae;
 
-  Foo.setName("Foo");
   Foo.announce();
 
-  Bae = newZombie("Bae");
+  Bae = Zombie::newZombie("Bae");
   Bae->announce();
-
-  randomChump("Jae");
 
   delete Bae;
   return (0);

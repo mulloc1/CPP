@@ -2,32 +2,17 @@
 
 Zombie::Zombie()
 {
-}
-
-Zombie::Zombie(std::string name, int number)
-{
-  this->_name = name;
-  this->_number = number;
+  std::cout << "Zombie constructor called\n" << std::endl;
 }
 
 Zombie::~Zombie()
 {
-  std::cout << this->_number << " " << this->_name << " is died" << std::endl;
+  std::cout << this->_number << " Zombie is died" << std::endl;
 }
 
 void  Zombie::announce(void)
 {
-  std::cout << this->_number << " " << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-void  Zombie::setName(std::string name)
-{
-  this->_name = name;
-}
-
-std::string Zombie::getName()
-{
-  return (this->_name);
+  std::cout << this->_number << " Zombie : BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void  Zombie::setNumber(int number)
