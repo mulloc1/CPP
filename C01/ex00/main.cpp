@@ -8,8 +8,11 @@ int main(void)
 
   Foo.announce();
 
-  Bae = Zombie::newZombie("Bae");
+  Bae = newZombie("Bae");
   Bae->announce();
+
+  Bae->setName("Jae");
+  randomChump(Bae->getName());
 
   delete Bae;
   return (0);

@@ -3,7 +3,7 @@ NAME = ex01
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Zombie.cpp ZombieHorde.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

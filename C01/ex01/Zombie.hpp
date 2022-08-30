@@ -6,16 +6,17 @@
 class	Zombie
 {
 	private:
-    int         _number;
+    int _number;
+    static int _zombieCount;
 
 	public:
     Zombie();
     ~Zombie();
 		void announce(void);
-    void setNumber(int number);
+    void setNumber(const int& number);
     int getNumber();
 };
 
-Zombie* zombieHorde(int N);
+Zombie* zombieHorde(const int& N);
 
 #endif

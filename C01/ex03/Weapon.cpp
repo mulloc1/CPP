@@ -3,12 +3,12 @@
 Weapon::~Weapon()
 {}
 
-Weapon::Weapon(std::string type)
+Weapon::Weapon(const std::string& type)
 {
   this->_type = type;
 }
 
-void  Weapon::setType(std::string type)
+void  Weapon::setType(const std::string& type)
 {
   this->_type = type;
 }
