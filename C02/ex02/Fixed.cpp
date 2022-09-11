@@ -2,16 +2,19 @@
 #include <cmath>
 
 Fixed::Fixed() 
-  : _raw(0)
-{}
+{
+  this->_raw = 0;
+}
 
 Fixed::Fixed(int const &raw)
-  : _raw(raw << this->_bits)
-{}
+{
+  this->_raw = raw << this->_bits;
+}
 
 Fixed::Fixed(float const &raw)
-  : _raw(roundf(raw * (1 << this->_bits)))
-{}
+{
+  this->_raw = roundf(raw * (1 << this->_bits));
+}
 
 Fixed::Fixed(Fixed const &fixed) 
 { 

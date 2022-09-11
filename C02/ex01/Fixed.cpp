@@ -1,23 +1,23 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed()
-  : _raw(0)
-{ 
+{
+  this->_raw = 0; 
   std::cout << "Default constructor called" << std::endl; 
 }
 
 Fixed::Fixed(int const &raw)
-  : _raw(raw << this->_bits)
 { 
+  this->_raw = raw << this->_bits;
   std::cout << "Int constructor called" << std::endl; 
 }
   
 
 Fixed::Fixed(float const &raw)
-  : _raw(roundf(raw * (1 << this->_bits)))
-{ 
+{
+  this->_raw = roundf(raw * (1 << this->_bits));
   std::cout << "Float constructor called" << std::endl; 
-  }
+}
 
 Fixed::Fixed(Fixed const &fixed)
 {
