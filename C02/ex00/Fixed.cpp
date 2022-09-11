@@ -2,7 +2,9 @@
 
 Fixed::Fixed()
   : _raw(0)
-{ std::cout << "Default constructor called" << std::endl; }
+{ 
+  std::cout << "Default constructor called" << std::endl; 
+}
 
 Fixed::Fixed(Fixed const &fixed)
 {
@@ -11,7 +13,9 @@ Fixed::Fixed(Fixed const &fixed)
 }
 
 Fixed::~Fixed() 
-{ std::cout << "Destructor called" << std::endl; }
+{ 
+  std::cout << "Destructor called" << std::endl; 
+}
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {

@@ -14,9 +14,12 @@ Fixed::Fixed(float const &raw)
 {}
 
 Fixed::Fixed(Fixed const &fixed) 
-{ *this = fixed; }
+{ 
+  *this = fixed; 
+}
 
-Fixed::~Fixed() {}
+Fixed::~Fixed() 
+{}
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {
@@ -38,16 +41,24 @@ std::ostream& operator<<(std::ostream &out, const Fixed &fixed)
 }
 
 int Fixed::getRawBits(void) const 
-{ return (this->_raw); }
+{ 
+  return (this->_raw);
+}
 
 void Fixed::setRawBits(int const &raw) 
-{ this->_raw = raw; }
+{ 
+  this->_raw = raw; 
+}
 
 float Fixed::toFloat(void) const
-{ return (static_cast<float>(this->_raw) / static_cast<float> (1 << this->_bits)); }
+{ 
+  return (static_cast<float>(this->_raw) / static_cast<float> (1 << this->_bits)); 
+}
 
 int Fixed::toInt(void) const 
-{ return (this->_raw >> this->_bits); }
+{ 
+  return (this->_raw >> this->_bits);
+}
 
 Fixed& Fixed::operator++()
 {
