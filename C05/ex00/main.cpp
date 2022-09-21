@@ -8,7 +8,7 @@ int main(void)
     try
     {
         //jaebae.decrement(150);
-        jaebae.increment(151);
+        jaebae.increment(150);
     }
     catch (std::exception& e)
     {
