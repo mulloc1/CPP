@@ -1,32 +1,30 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include <iosteam>
+# include <iostream>
 # include <exception>
 
 class Form
 {
 private:
-    std::string   _name;
-    bool          _signAble;
-    unsigned int  _signGrade;
-    unsigned int  _executeGrade;
-public:
+    const std::string   _name;
+    bool                _signAble;
+    const int           _signGrade;
+    const int           _executeGrade;
     Form();
+public:
+    Form(const std::string& name);
+    Form(const std::string& name, const int& signGrade);
+    Form(const std::string& name, const int& executeGrade);
     Form(const std::string& name, const unsigned int& signGrade, const unsigned int& executeGrade);
     Form(const Form& dummy);
-    ~Form();
+    virtual ~Form();
     Form& operator = (const Form& dummy);
 
     const std::string& getName();
     const bool& getSignAble();
-    const unsigned int& getSignGrade();
-    const unsigned int& getExecuteGrade();
-
-    void setName(const std::string& name);
-    void setSignAble(const bool& signAble);
-    void setSignGrade(const unsigned int& signGrade);
-    void setExecuteGrade(const unsigned int& executeGrade);
+    const int& getSignGrade();
+    const int& getExecuteGrade();
 
     void beSined();
 

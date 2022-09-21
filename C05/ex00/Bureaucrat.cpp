@@ -1,12 +1,5 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string& name)
-: _name(name)
-{
-    this->_grade = 150;
-    std::cout << "Bureaucrat grade constructor called" << std::endl;
-}
-
 Bureaucrat::Bureaucrat(const std::string& name, const int& grade)
 : _name(name), _grade(grade)
 {
@@ -68,7 +61,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
     return ("GradeTooHighException");
 }
 
-std::ostream& operator << (std::ostream& out, Bureaucrat& dummy)
+std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy);
 {
     out << dummy.getName() << ", bureaucrat grade " << dummy.getGrade();
     return (out);

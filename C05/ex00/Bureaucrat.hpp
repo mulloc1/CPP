@@ -10,7 +10,6 @@ private:
     int                 _grade;
     Bureaucrat();
 public:
-    Bureaucrat(const std::string& name);
     Bureaucrat(const std::string& name, const int& grade);
     Bureaucrat(const Bureaucrat& dummy);
     virtual ~Bureaucrat();
@@ -35,6 +34,6 @@ public:
     };
 };
 
-std::ostream& operator << (std::ostream& out, Bureaucrat& dummy);
+std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy);
 
 #endif
