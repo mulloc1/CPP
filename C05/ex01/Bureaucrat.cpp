@@ -51,6 +51,15 @@ void Bureaucrat::decrement(const int& grade)
     this->_grade += grade;
 }
 
+void Bureaucrat::signForm(const Form& form)
+{
+    if (form.getSignAble())
+        std::out << *this << " signed " << form << std::endl;
+    else
+        std::out << *this << " couldn't sign " << form << " because grade too low" << std::endl;
+}
+
+
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return ("GradeTooLowException");

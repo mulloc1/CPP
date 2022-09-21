@@ -26,7 +26,7 @@ public:
     const int& getSignGrade();
     const int& getExecuteGrade();
 
-    void beSined();
+    void beSigned();
 
     class GradeTooHighException : public std::exception
     {

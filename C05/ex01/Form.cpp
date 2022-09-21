@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(const std::string& name, const int& signGrade, const int& executeGrade)
 : _name(name), _signAble(false), _signGrade(signGrade), _executeGrade(executeGrade)
@@ -46,9 +47,13 @@ const unsigned int& Form::getExecuteGrade()
     return (this->_executeGrade);
 }
 
-void Form::beSined(const Bureaucrat& bureaucrat)
+void Form::beSigned(const Bureaucrat& bureaucrat)
 {
-    if (bureaucrat.
+    int grade = bureaucrat.getGrade();
+    if (grade > this->signGrade)
+        throw Form::GradeTooLowException();
+    else
+        this->signAble = true;
 }
 
 const char* Form::GradeTooHighException::what() const throw()
@@ -63,6 +68,6 @@ const char* Form::GradeTooLowException::what() const throw()
 
 std::ostream& operator << (std::ostream& out, const Form::Form& dummy)
 {
-    out << dummy.getName() << " " << dummy.getSignAble() << " " << dummy.getSignGrade() << " " << dummy.getExecuteGrade() << std::endl;
+    out << dummy.getName() << std::endl;
     return (out);
 }
