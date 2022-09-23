@@ -14,7 +14,10 @@ public:
     ~Cat();
     Cat& operator = (const Cat& dummy);
 
-    virtual void makeSound() const; 
+    virtual void makeSound() const;
+    virtual void think(int n);
+    Brain* getBrain();
+    void setBrain(const Brain& brain);
 };
 
 #endif
