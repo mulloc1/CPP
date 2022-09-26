@@ -32,7 +32,7 @@ void Cat::makeSound() const
     std::cout << this->getType() << " says mew-mew" << std::endl;
 }
 
-void Cat::think(int n)
+void Cat::think(int n) const
 {
     for (int i = 0; i < n; i++) 
         std::cout << this->_brain->getIdeas()[i] << " ";

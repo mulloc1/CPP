@@ -11,11 +11,11 @@ private:
 public:
     Cat();
     Cat(const Cat& dummy);
-    ~Cat();
+    virtual ~Cat();
     Cat& operator = (const Cat& dummy);
 
     virtual void makeSound() const;
-    virtual void think(int n);
+    virtual void think(int n) const;
     Brain* getBrain();
     void setBrain(const Brain& brain);
 };

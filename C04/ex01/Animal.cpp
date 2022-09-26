@@ -44,5 +44,5 @@ std::string Animal::getType() const
     return (this->_type);
 }
 
-void Animal::think(int n)
+void Animal::think(int n) const
 {n++;}

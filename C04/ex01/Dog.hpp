@@ -11,12 +11,12 @@ private:
 public:
     Dog();
     Dog(const Dog& dummy);
-    ~Dog();
+    virtual ~Dog();
     Dog& operator = (const Dog& dummy);
 
     virtual void makeSound() const;
-    virtual void think(int n);
-    const Brain* getBrain();
+    virtual void think(int n) const;
+    Brain* getBrain();
     void setBrain(const Brain& brain);
 };
 
