@@ -17,8 +17,8 @@ public:
     Dog& operator = (const Dog& dummy);
 
     virtual void makeSound() const;
-    virtual void think(int n);
-    const Brain* getBrain();
+    virtual void think(int n) const;
+    Brain* getBrain() const;
     void setBrain(const Brain& brain);
     virtual void setType(const std::string& type);
     virtual std::string getType() const;

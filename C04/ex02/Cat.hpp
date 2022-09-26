@@ -16,8 +16,8 @@ public:
     Cat& operator = (const Cat& dummy);
 
     virtual void makeSound() const;
-    virtual void think(int n);
-    Brain* getBrain();
+    virtual void think(int n) const;
+    Brain* getBrain() const;
     void setBrain(const Brain& brain);
     virtual void setType(const std::string& type);
     virtual std::string getType() const;

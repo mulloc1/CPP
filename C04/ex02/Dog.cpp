@@ -32,14 +32,14 @@ void Dog::makeSound() const
     std::cout << this->getType() << " says mew-mew" << std::endl;
 }
 
-void Dog::think(int n)
+void Dog::think(int n) const
 {
     for (int i = 0; i < n; i++) 
         std::cout << this->_brain->getIdeas()[i] << " ";
     std::cout << std::endl;
 }
 
-const Brain* Dog::getBrain()
+Brain* Dog::getBrain() const
 {
     return this->_brain;
 }
