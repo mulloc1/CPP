@@ -1,8 +1,8 @@
 NAME = ex02
 
 CC = c++
-CFLAG = -Wall -Wextra -Werror -std=c++98 -g
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+CFLAG = -Wall -Wextra -Werror -std=c++98
+SRCS = main.cpp Cat.cpp Dog.cpp Brain.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -20,6 +20,6 @@ clean :
 re : clean all
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAG) -fsanitize=address -o $@ $^
+	$(CC) $(CFLAG) -o $@ $^
 
 .PHONY : re fclean clean all 

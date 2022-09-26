@@ -7,17 +7,20 @@
 class Cat : public Animal
 {
 private:
+    std::string _type;
     Brain* _brain;
 public:
     Cat();
     Cat(const Cat& dummy);
-    ~Cat();
+    virtual ~Cat();
     Cat& operator = (const Cat& dummy);
 
     virtual void makeSound() const;
     virtual void think(int n);
     Brain* getBrain();
     void setBrain(const Brain& brain);
+    virtual void setType(const std::string& type);
+    virtual std::string getType() const;
 };
 
 #endif

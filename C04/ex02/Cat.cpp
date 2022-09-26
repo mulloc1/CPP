@@ -1,14 +1,14 @@
 #include "Cat.hpp"
 
 Cat::Cat()
-: Animal("Cat"), _brain(nullptr)
+: _type("Cat"), _brain(nullptr)
 {
     this->_brain = new Brain();
     std::cout << "Cat default constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat& dummy)
-: Animal("Cat"), _brain(nullptr)
+: _type("Cat"), _brain(nullptr)
 {
     *this = dummy;
     std::cout << "Cat copy constructor called" << std::endl;
@@ -47,4 +47,14 @@ Brain* Cat::getBrain()
 void Cat::setBrain(const Brain& brain)
 {
     *this->_brain = brain;
+}
+
+void Cat::setType(const std::string& type)
+{
+    this->_type = type;
+}
+
+std::string Cat::getType() const
+{
+    return (this->_type);
 }

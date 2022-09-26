@@ -12,7 +12,7 @@ int main(void)
 
     std::cout << "============================" << std::endl;
 
-    std::string strs[3] = {"Hello", "World", "Cat1"};
+    std::string strs[3] = {"Hello", "World", "Cat2"};
     brain1->setIdeas(strs, 3);
     strs[2] = "Cat2";
     brain2->setIdeas(strs, 3);
@@ -20,7 +20,7 @@ int main(void)
     cat1->setBrain(*brain1);
 
     Cat* cat2 = new Cat(*cat1);
-    cat1->getBrain()->getIdeas()[2] = "test";
+    cat1->getBrain()->getIdeas()[2] = "Cat1";
     cat1->think(3);
     cat2->think(3);
 
