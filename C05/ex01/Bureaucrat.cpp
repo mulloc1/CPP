@@ -32,7 +32,7 @@ std::string const& Bureaucrat::getName() const
     return (this->_name);
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return (this->_grade);
 }
@@ -53,12 +53,11 @@ void Bureaucrat::decrement(const int& grade)
 
 void Bureaucrat::signForm(const Form& form)
 {
-    if (form.getSignAble())
-        std::out << *this << " signed " << form << std::endl;
+    if (form.getSigned())
+        std::cout << *this << " signed " << form << std::endl;
     else
-        std::out << *this << " couldn't sign " << form << " because grade too low" << std::endl;
+        std::cout << *this << " couldn't sign " << form << " because unsigned" << std::endl;
 }
-
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
@@ -70,7 +69,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
     return ("GradeTooHighException");
 }
 
-std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy);
+std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy)
 {
     out << dummy.getName() << ", bureaucrat grade " << dummy.getGrade();
     return (out);

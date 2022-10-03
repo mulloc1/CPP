@@ -1,7 +1,9 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "iostream"
+# include <iostream>
+# include <exception>
+# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -12,11 +14,11 @@ private:
 public:
     Bureaucrat(const std::string& name, const int& grade);
     Bureaucrat(const Bureaucrat& dummy);
-    virtual ~Bureaucrat();
+    ~Bureaucrat();
     Bureaucrat& operator = (const Bureaucrat& dummy);
 
     std::string const &getName() const;
-    int getGrade();
+    int getGrade() const;
 
     void increment(const int& grade);
     void decrement(const int& grade);

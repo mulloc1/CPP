@@ -32,7 +32,7 @@ std::string const& Bureaucrat::getName() const
     return (this->_name);
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return (this->_grade);
 }
@@ -61,7 +61,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
     return ("GradeTooHighException");
 }
 
-std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy);
+std::ostream& operator << (std::ostream& out, const Bureaucrat& dummy)
 {
     out << dummy.getName() << ", bureaucrat grade " << dummy.getGrade();
     return (out);

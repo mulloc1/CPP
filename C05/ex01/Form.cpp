@@ -1,12 +1,11 @@
 #include "Form.hpp"
-#include "Bureaucrat.hpp"
 
-Form::Form(const std::string& name, const int& signGrade, const int& executeGrade)
-: _name(name), _signAble(false), _signGrade(signGrade), _executeGrade(executeGrade)
+Form::Form(const std::string& name, const int& signGrade)
+: _name(name), _signed(false), _signGrade(signGrade)
 {
-    if (this->_signGrade > 150 || this->_executeGrade > 150))
+    if (this->_signGrade > 150)
         throw Form::GradeTooLowException();
-    else if (this->_signGrade < 1 || this->_executeGrade < 1)
+    else if (this->_signGrade < 1)
         throw Form::GradeTooHighException();
     std::cout << "Form constructor called" << std::endl;
 }
@@ -23,28 +22,23 @@ Form::~Form()
 
 Form& Form::operator = (const Form& dummy)
 {
-    this->_signAble = dummy._signAble;
+    this->_signed = dummy._signed;
     return (*this);
 }
 
-const std::string& Form::getName()
+const std::string& Form::getName() const
 {
     return (this->_name);
 }
 
-const bool& Form::getSignAble()
+const bool& Form::getSigned() const
 {
-    return (this->_signAble);
+    return (this->_signed);
 }
 
-const unsigned int& Form::getSignGrade()
+const unsigned int& Form::getSignGrade() const
 {
     return (this->_signGrade);
-}
-
-const unsigned int& Form::getExecuteGrade()
-{
-    return (this->_executeGrade);
 }
 
 void Form::beSigned(const Bureaucrat& bureaucrat)
@@ -53,7 +47,7 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
     if (grade > this->signGrade)
         throw Form::GradeTooLowException();
     else
-        this->signAble = true;
+        this->signed = true;
 }
 
 const char* Form::GradeTooHighException::what() const throw()

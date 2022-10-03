@@ -1,7 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "iostream"
+# include <iostream>
 
 class Bureaucrat
 {
@@ -16,7 +16,7 @@ public:
     Bureaucrat& operator = (const Bureaucrat& dummy);
 
     std::string const &getName() const;
-    int getGrade();
+    int getGrade() const;
 
     void increment(const int& grade);
     void decrement(const int& grade);

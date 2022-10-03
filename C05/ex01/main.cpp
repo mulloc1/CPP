@@ -1,21 +1,11 @@
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 int main(void)
 {
-    Bureaucrat jaebae(150);
+    Bureaucrat b("jaebae", 150);
+    Form f("jaebae sign", 50);
 
-    std::cout << jaebae << std::endl;
-
-    try
-    {
-        //jaebae.decrement(150);
-        jaebae.increment(151);
-    }
-    catch (std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
- 
-    std::cout << jaebae << std::endl;
+    f.beSigned(b);
+    b.signForm(f);
     return (0);
 }

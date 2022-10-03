@@ -3,30 +3,26 @@
 
 # include <iostream>
 # include <exception>
+# include "Bureaucrat.hpp"
 
 class Form
 {
 private:
     const std::string   _name;
-    bool                _signAble;
+    bool                _signed;
     const int           _signGrade;
-    const int           _executeGrade;
     Form();
 public:
-    Form(const std::string& name);
-    Form(const std::string& name, const int& signGrade);
-    Form(const std::string& name, const int& executeGrade);
-    Form(const std::string& name, const unsigned int& signGrade, const unsigned int& executeGrade);
+    Form(const std::string& name, const unsigned int& signGrade);
     Form(const Form& dummy);
-    virtual ~Form();
+    ~Form();
     Form& operator = (const Form& dummy);
 
-    const std::string& getName();
-    const bool& getSignAble();
-    const int& getSignGrade();
-    const int& getExecuteGrade();
+    const std::string& getName() const;
+    const bool& getSigned() const;
+    const int& getSignGrade() const;
 
-    void beSigned();
+    void beSigned(const Bureaucrat& bureaucrat);
 
     class GradeTooHighException : public std::exception
     {
@@ -39,8 +35,8 @@ public:
     public:
         const char* what() const throw();
     };
-}
+};
 
-std::ostream& operator << (std::ostream& out, const Form::Form& dummy);
+std::ostream& operator << (std::ostream& out, const Form& dummy);
 
 #endif
