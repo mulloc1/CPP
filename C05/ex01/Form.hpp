@@ -13,7 +13,7 @@ private:
     const int           _signGrade;
     Form();
 public:
-    Form(const std::string& name, const unsigned int& signGrade);
+    Form(const std::string& name, const int& signGrade);
     Form(const Form& dummy);
     ~Form();
     Form& operator = (const Form& dummy);
@@ -38,5 +38,7 @@ public:
 };
 
 std::ostream& operator << (std::ostream& out, const Form& dummy);
+
+// std::ostream& operator << (std::ostream& out, Form& dummy);
 
 #endif

@@ -3,7 +3,6 @@
 
 # include <iostream>
 # include <exception>
-# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -23,7 +22,7 @@ public:
     void increment(const int& grade);
     void decrement(const int& grade);
 
-    void signForm(const Form& form);
+    void signForm(bool sign, std::string formName);
 
     class GradeTooHighException : public std::exception
     {

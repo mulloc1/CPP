@@ -1,9 +1,9 @@
-NAME = ex00
+NAME = ex01
 
 CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Bureaucrat.cpp Form.cpp main.cpp
+SRCS = main.cpp Form.cpp Bureaucrat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

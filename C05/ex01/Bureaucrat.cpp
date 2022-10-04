@@ -51,12 +51,12 @@ void Bureaucrat::decrement(const int& grade)
     this->_grade += grade;
 }
 
-void Bureaucrat::signForm(const Form& form)
+void Bureaucrat::signForm(bool sign, std::string formName)
 {
-    if (form.getSigned())
-        std::cout << *this << " signed " << form << std::endl;
+    if (sign)
+        std::cout << this->getName() << " signed " << formName << std::endl;
     else
-        std::cout << *this << " couldn't sign " << form << " because unsigned" << std::endl;
+        std::cout << this->getName() << " couldn't sign " << formName << " because unsigned" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
