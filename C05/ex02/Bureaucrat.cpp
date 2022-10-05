@@ -51,12 +51,14 @@ void Bureaucrat::decrement(const int& grade)
     this->_grade += grade;
 }
 
-void Bureaucrat::signForm(bool sign, std::string formName)
+void Bureaucrat::signForm(bool sign, const std::string &formName, const int& executeGrade)
 {
-    if (sign)
+    if (sign && this->_grade <= executeGrade) // 실행 권한도 추가해야함.
         std::cout << this->getName() << " signed " << formName << std::endl;
-    else
+    else if (!sign)
         std::cout << this->getName() << " couldn't sign " << formName << " because unsigned" << std::endl;
+    else
+        std::cout << this->getName() << " couldn't sign " << formName << " because too small executeGrade" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()

@@ -22,7 +22,7 @@ public:
     void increment(const int& grade);
     void decrement(const int& grade);
 
-    void signForm(bool sign, std::string formName);
+    void signForm(bool sign, const std::string& formName, const int& executeGrade);
 
     class GradeTooHighException : public std::exception
     {

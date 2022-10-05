@@ -4,7 +4,7 @@
 int main(void)
 {
     Bureaucrat b("jaebae", 150);
-    Form f("jaebae sign", 50);
+    Form f("jaebae sign", 50, 150);
 
     try{
         f.beSigned(b);
@@ -13,7 +13,7 @@ int main(void)
     }
 
     try {
-        b.signForm(f.getSigned(), f.getName());
+        b.signForm(f.getSigned(), f.getName(), f.getExecuteGrade());
     } catch (std::exception e) {
         e.what();
     }

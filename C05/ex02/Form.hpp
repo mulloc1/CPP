@@ -11,18 +11,16 @@ private:
     const std::string   _name;
     bool                _signed;
     const int           _signGrade;
-    Form();
+    const int           _executeGrade;
 public:
-    Form(const std::string& name, const int& signGrade);
-    Form(const Form& dummy);
-    ~Form();
     Form& operator = (const Form& dummy);
 
     const std::string& getName() const;
     const bool& getSigned() const;
     const int& getSignGrade() const;
+    const int& getExecuteGrade() const;
 
-    void beSigned(const Bureaucrat& bureaucrat);
+    virtual void beSigned(const Bureaucrat& bureaucrat);
 
     class GradeTooHighException : public std::exception
     {
@@ -38,7 +36,4 @@ public:
 };
 
 std::ostream& operator << (std::ostream& out, const Form& dummy);
-
-// std::ostream& operator << (std::ostream& out, Form& dummy);
-
 #endif

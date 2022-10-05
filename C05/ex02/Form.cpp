@@ -1,26 +1,5 @@
 #include "Form.hpp"
 
-Form::Form(const std::string& name, const int& signGrade)
-: _name(name), _signed(false), _signGrade(signGrade)
-{
-    if (this->_signGrade > 150)
-        throw Form::GradeTooLowException();
-    else if (this->_signGrade < 1)
-        throw Form::GradeTooHighException();
-    std::cout << "Form constructor called" << std::endl;
-}
-
-Form::Form(const Form& dummy)
-: _name(dummy.getName()), _signGrade(dummy.getSignGrade())
-{
-    *this = dummy;
-}
-
-Form::~Form()
-{
-    std::cout << "Form destructor called" << std::endl;
-}
-
 Form& Form::operator = (const Form& dummy)
 {
     this->_signed = dummy._signed;
@@ -40,6 +19,11 @@ const bool& Form::getSigned() const
 const int& Form::getSignGrade() const
 {
     return (this->_signGrade);
+}
+
+const int& Form::getExecuteGrade() const
+{
+    return (this->_executeGrade);
 }
 
 void Form::beSigned(const Bureaucrat& bureaucrat)
@@ -66,9 +50,3 @@ std::ostream& operator << (std::ostream& out, const Form& dummy)
     out << dummy.getName() << std::endl;
     return (out);
 }
-
-// std::ostream& operator << (std::ostream& out, Form& dummy)
-// {
-//     out << dummy.getName() << std::endl;
-//     return (out);
-// }
