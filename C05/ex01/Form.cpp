@@ -1,7 +1,7 @@
 #include "Form.hpp"
 
-Form::Form(const std::string& name, const int& signGrade, const int& executeGrade)
-: _name(name), _signed(false), _signGrade(signGrade), _executeGrade(executeGrade)
+Form::Form(const std::string& name, const int& signGrade)
+: _name(name), _signed(false), _signGrade(signGrade)
 {
     if (this->_signGrade > 150)
         throw Form::GradeTooLowException();
@@ -11,7 +11,7 @@ Form::Form(const std::string& name, const int& signGrade, const int& executeGrad
 }
 
 Form::Form(const Form& dummy)
-: _name(dummy.getName()), _signGrade(dummy.getSignGrade()), _executeGrade(dummy.getExecuteGrade())
+: _name(dummy.getName()), _signGrade(dummy.getSignGrade())
 {
     *this = dummy;
 }
@@ -40,11 +40,6 @@ const bool& Form::getSigned() const
 const int& Form::getSignGrade() const
 {
     return (this->_signGrade);
-}
-
-const int& Form::getExecuteGrade() const
-{
-    return (this->_executeGrade);
 }
 
 void Form::beSigned(const Bureaucrat& bureaucrat)

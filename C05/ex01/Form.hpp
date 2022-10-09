@@ -5,16 +5,17 @@
 # include <exception>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 private:
     const std::string   _name;
     bool                _signed;
     const int           _signGrade;
-    const int           _executeGrade;
     Form();
 public:
-    Form(const std::string& name, const int& signGrade, const int& executeGrade);
+    Form(const std::string& name, const int& signGrade);
     Form(const Form& dummy);
     ~Form();
     Form& operator = (const Form& dummy);
@@ -22,7 +23,6 @@ public:
     const std::string& getName() const;
     const bool& getSigned() const;
     const int& getSignGrade() const;
-    const int& getExecuteGrade() const;
 
     void beSigned(const Bureaucrat& bureaucrat);
 
@@ -40,7 +40,5 @@ public:
 };
 
 std::ostream& operator << (std::ostream& out, const Form& dummy);
-
-// std::ostream& operator << (std::ostream& out, Form& dummy);
 
 #endif
