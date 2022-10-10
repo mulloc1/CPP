@@ -41,7 +41,7 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         newFile << "   ~  \\\\ //  ~\n";
         newFile << "_- -   | | _- _\n";
         newFile << "  _ -  | |   -_\n";
-        newFile << "      // \\\n";
+        newFile << "      // \\\\\n";
         newFile.close();
         return (true);
     }

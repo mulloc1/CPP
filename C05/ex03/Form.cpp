@@ -68,6 +68,6 @@ const char* Form::GradeTooLowException::what() const throw()
 
 std::ostream& operator << (std::ostream& out, const Form& dummy)
 {
-    out << dummy.getName() << std::endl;
+    out << dummy.getName();
     return (out);
 }

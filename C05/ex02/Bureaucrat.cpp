@@ -62,9 +62,9 @@ void Bureaucrat::signForm(const Form &form)
 void Bureaucrat::executeForm(Form const &form)
 {
     if (form.execute(*this))
-        std::cout << this << " executed " << form << std::endl;
+        std::cout << *this << " executed " << form << std::endl;
     else
-        std::cout << this << " executed failed " << form << " because is too low grade" << std::endl;
+        std::cout << *this << " executed failed " << form << " because is too low grade" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
