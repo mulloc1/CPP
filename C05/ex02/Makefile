@@ -14,6 +14,7 @@ fclean : clean
 
 clean :
 	rm -f $(OBJS)
+	rm *_Shrubbery
 
 %.o : %.cpp
 	$(CC) $(CFLAG) -c $< -o $@
