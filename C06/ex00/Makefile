@@ -1,7 +1,7 @@
-NAME = ex00
+NAME = convert
 
 CC = c++
-CFLAG = -Wall -Wextra -Werror -std=c++98
+CFLAG = -Wall -Wextra -Werror -std=c++98 -g
 
 SRCS = main.cpp Convert.cpp
 

@@ -1,26 +1,16 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-#include<cstdlib>
-#include<ctime>
-
-Base* generate(void);
-void identify(Base* p);
-void identify(Base& p);
-
-int main(void)
-{
-    Base* base = ::generate();
-    ::identify(base);
-    ::identify(*base);
-    delete base;
-    return (0);
-}
+#include <random>
+#include <iostream>
 
 Base* generate(void)
 {
-    srand((unsigned int)time(NULL));
-    int ran = std::rand() % 100;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(0, 99);
+
+    int ran = dis(gen);
 
     if (ran < 33)
         return (new A());
@@ -48,4 +38,13 @@ void identify(Base& p)
         std::cout << "B" << std::endl;
     if (dynamic_cast<C*> (&p) != nullptr)
         std::cout << "C" << std::endl;
+}
+
+int main(void)
+{
+    Base* base = ::generate();
+    ::identify(base);
+    ::identify(*base);
+    delete base;
+    return (0);
 }

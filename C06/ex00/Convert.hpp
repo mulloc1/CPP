@@ -10,8 +10,8 @@ class Convert
 {
 private:
     double  _data;
-    int     _nan;
-    int     _inf;
+    bool     _nan;
+    bool     _inf;
 public:
     Convert(char *str);
     Convert(const Convert& dummy);
