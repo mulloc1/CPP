@@ -9,7 +9,10 @@
 class Convert
 {
 private:
-    double  _data;
+    double  _dataD;
+    float   _dataF;
+    int     _dataI;
+    char    _dataC;
     bool     _nan;
     bool     _inf;
 public:

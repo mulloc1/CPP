@@ -11,15 +11,17 @@ bool flowCheck(T num, U overFlowNum, U underFlowNum)
 }
 
 Convert::Convert(char *str)
-: _data(0), _nan(false), _inf(false)
+: _nan(false), _inf(false)
 {
     std::string string = static_cast<std::string> (str);
     if (!string.find("nan", 0))
         this->_nan = true;
     else if (!string.find("inf", 0))
         this->_inf = true;
-    else
-        _data = std::atof(str);
+    _dataD = std::atof(str);
+    _dataF = static_cast<float> (std::atof(str));
+    _dataI = std::atoi(str);
+    _dataC = static_cast<char> (std::atoi(str));
 }
 
 Convert::~Convert()
@@ -32,7 +34,10 @@ Convert::Convert(const Convert& dummy)
 
 Convert& Convert::operator = (const Convert& dummy)
 {
-    this->_data = dummy._data;
+    this->_dataD = dummy._dataD;
+    this->_dataF = dummy._dataF;
+    this->_dataI = dummy._dataI;
+    this->_dataC = dummy._dataC;
     this->_inf = dummy._inf;
     this->_nan = dummy._nan;
     return (*this);
@@ -41,10 +46,10 @@ Convert& Convert::operator = (const Convert& dummy)
 void Convert::printChar()
 {
     std::cout << "char: ";
-    if (this->_nan == true || this->_inf == true || flowCheck(this->_data, CHAR_MAX, CHAR_MIN))
+    if (this->_nan == true || this->_inf == true || flowCheck(this->_dataC, CHAR_MAX, CHAR_MIN))
         std::cout << "impossible" << std::endl;
-    else if (static_cast<char> (this->_data) >= ' ')
-        std::cout << "'" << static_cast<char> (this->_data) << "'" << std::endl;
+    else if (this->_dataC >= ' ')
+        std::cout << "'" << this->_dataC << "'" << std::endl;
     else
         std::cout << "Non displayable" << std::endl;
 }
@@ -52,10 +57,10 @@ void Convert::printChar()
 void Convert::printInt()
 {
     std::cout << "int: ";
-    if (this->_nan == true || this->_inf == true || flowCheck(this->_data, INT_MAX, INT_MIN))
+    if (this->_nan == true || this->_inf == true || flowCheck(this->_dataI, INT_MAX, INT_MIN))
         std::cout << "impossible" << std::endl;
     else
-        std::cout << static_cast<int> (this->_data) << std::endl;
+        std::cout << this->_dataI << std::endl;
 }
 
 void Convert::printFloat()
@@ -66,8 +71,8 @@ void Convert::printFloat()
     else if (this->_inf == true)
         std::cout << "inf";
     else
-        std::cout << this->_data;
-    if (this->_data - static_cast <int> (this->_data) == 0 && this->_nan == false && this->_inf == false)
+        std::cout << this->_dataF;
+    if (this->_dataF - static_cast <int> (this->_dataF) == 0 && this->_nan == false && this->_inf == false)
         std::cout << ".0";
     std::cout << "f" << std::endl;
 }
@@ -80,8 +85,8 @@ void Convert::printDouble()
     else if (this->_inf == true)
         std::cout << "inf";
     else
-        std::cout << this->_data;
-    if (this->_data - static_cast <long> (this->_data) == 0 && this->_nan == false && this->_inf == false)
+        std::cout << this->_dataD;
+    if (this->_dataD - static_cast <long> (this->_dataD) == 0 && this->_nan == false && this->_inf == false)
         std::cout << ".0";
     std::cout << std::endl;
 }
