@@ -18,7 +18,13 @@ Data& Data::operator = (const Data& dummy)
     return (*this);
 }
     
-int Data::getData()
+int Data::getData() const
 {
     return (this->_data);
+}
+
+std::ostream& operator << (std::ostream& out, const Data& data) 
+{
+    out << "Data : " << data.getData();
+    return out;
 }

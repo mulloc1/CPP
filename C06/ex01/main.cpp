@@ -16,8 +16,8 @@ int main(void)
 {
     Data *data = new Data();
 
-    std::cout << data->getData() << std::endl;
-    std::cout << ::deserialize(::serialize(data))->getData() << std::endl;
+    std::cout << *data << std::endl;
+    std::cout << *(::deserialize(::serialize(data))) << std::endl;
     delete data;
     return (0);
 }
