@@ -10,6 +10,29 @@ bool flowCheck(T num, U overFlowNum, U underFlowNum)
     return (false);
 }
 
+bool isChar(char *str) {
+    std::string string = static_cast<std::string> (str);
+    char c = string.at(0);
+    if (c >= '0' && c <= '9')
+        c = std::atoi(str);
+    if ((c >= 32 && c <= 127) && string.size() == 1)
+        return true;
+    return false;
+}
+
+bool isString(char *str) {
+    if (std::atoi(str))
+        return false;
+    std::string string = static_cast<std::string> (str);
+    for (unsigned long i = 0; i < string.size(); i++)
+    {
+        char c = string.at(i);
+        if (!(c >= '0' && c <= '9'))
+            return false;
+    }
+    return true;
+}
+
 Convert::Convert(char *str)
 : _nan(false), _inf(false)
 {
@@ -18,10 +41,21 @@ Convert::Convert(char *str)
         this->_nan = true;
     else if (!string.find("inf", 0))
         this->_inf = true;
-    _dataD = std::atof(str);
-    _dataF = static_cast<float> (std::atof(str));
-    _dataI = std::atoi(str);
-    _dataC = static_cast<char> (std::atoi(str));
+    if (isChar(str)) 
+    {
+        char c = string.at(0);
+        _dataD = static_cast<double> (c);
+        _dataF = static_cast<float> (c);
+        _dataI = static_cast<int> (c);
+        _dataC = c;
+    }
+    else 
+    {
+        _dataD = std::atof(str);
+        _dataF = static_cast<float> (std::atof(str));
+        _dataI = std::atoi(str);
+        _dataC = std::atoi(str);
+    }
 }
 
 Convert::~Convert()
@@ -46,7 +80,7 @@ Convert& Convert::operator = (const Convert& dummy)
 void Convert::printChar()
 {
     std::cout << "char: ";
-    if (this->_nan == true || this->_inf == true || flowCheck(this->_dataC, CHAR_MAX, CHAR_MIN))
+    if (this->_nan || this->_inf || flowCheck(this->_dataC, CHAR_MAX, CHAR_MIN))
         std::cout << "impossible" << std::endl;
     else if (this->_dataC >= ' ')
         std::cout << "'" << this->_dataC << "'" << std::endl;
@@ -57,7 +91,7 @@ void Convert::printChar()
 void Convert::printInt()
 {
     std::cout << "int: ";
-    if (this->_nan == true || this->_inf == true || flowCheck(this->_dataI, INT_MAX, INT_MIN))
+    if (this->_nan || this->_inf || flowCheck(this->_dataI, INT_MAX, INT_MIN))
         std::cout << "impossible" << std::endl;
     else
         std::cout << this->_dataI << std::endl;
