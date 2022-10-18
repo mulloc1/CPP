@@ -11,7 +11,7 @@ class Convert
 private:
     double  _dataD;
     float   _dataF;
-    int     _dataI;
+    long    _dataI;
     int     _dataC;
     bool    _nan;
     bool    _inf;

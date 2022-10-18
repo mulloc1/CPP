@@ -57,7 +57,7 @@ Convert::Convert(char *str)
     {
         _dataD = std::atof(str);
         _dataF = static_cast<float> (std::atof(str));
-        _dataI = std::atoi(str);
+        _dataI = std::atol(str);
         _dataC = std::atoi(str);
     }
 }
@@ -109,13 +109,10 @@ void Convert::printFloat()
     else if (this->_inf == true)
         std::cout << "inf";
     else if (this->_imp)
-    {
-        std::cout << "impossible" << std::endl;
-        return ;
-    }
+        std::cout << "impossible";
     else
         std::cout << this->_dataF;
-    if (this->_dataF - static_cast <int> (this->_dataF) == 0 && this->_nan == false && this->_inf == false)
+    if (this->_dataF - static_cast <int> (this->_dataF) == 0 && this->_nan == false && this->_inf == false && !this->_imp)
         std::cout << ".0";
     std::cout << "f" << std::endl;
 }
@@ -128,13 +125,10 @@ void Convert::printDouble()
     else if (this->_inf == true)
         std::cout << "inf";
     else if (this->_imp)
-    {
-        std::cout << "impossible" << std::endl;
-        return ;
-    }
+        std::cout << "impossible";
     else
         std::cout << this->_dataD;
-    if (this->_dataD - static_cast <long> (this->_dataD) == 0 && this->_nan == false && this->_inf == false)
+    if (this->_dataD - static_cast <long> (this->_dataD) == 0 && this->_nan == false && this->_inf == false && !this->_imp)
         std::cout << ".0";
     std::cout << std::endl;
 }
