@@ -12,9 +12,10 @@ private:
     double  _dataD;
     float   _dataF;
     int     _dataI;
-    char    _dataC;
-    bool     _nan;
-    bool     _inf;
+    int     _dataC;
+    bool    _nan;
+    bool    _inf;
+    bool    _imp;
 public:
     Convert(char *str);
     Convert(const Convert& dummy);
