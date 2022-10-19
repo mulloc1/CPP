@@ -22,22 +22,36 @@ Base* generate(void)
 
 void identify(Base* p)
 {
-    if (dynamic_cast<A*> (p) != nullptr)
-        std::cout << "A" << std::endl;
-    if (dynamic_cast<B*> (p) != nullptr)
-        std::cout << "B" << std::endl;
-    if (dynamic_cast<C*> (p) != nullptr)
-        std::cout << "C" << std::endl;
+    A *a = dynamic_cast<A*> (p);
+    if (a != nullptr)
+        std::cout << a->getType() << std::endl;
+    B *b = dynamic_cast<B*> (p);
+    if (b != nullptr)
+        std::cout << b->getType() << std::endl;
+    C *c = dynamic_cast<C*> (p);
+    if (c != nullptr)
+        std::cout << c->getType() << std::endl;
 }
 
 void identify(Base& p)
 {
-    if (dynamic_cast<A*> (&p) != nullptr)
-        std::cout << "A" << std::endl;
-    if (dynamic_cast<B*> (&p) != nullptr)
-        std::cout << "B" << std::endl;
-    if (dynamic_cast<C*> (&p) != nullptr)
-        std::cout << "C" << std::endl;
+    try {
+        A &a = dynamic_cast<A&> (p);
+        std::cout << a.getType() << std::endl;
+    } catch (std::exception &e)
+    {}
+
+    try {
+        B &b = dynamic_cast<B&> (p);
+        std::cout << b.getType() << std::endl;
+    } catch (std::exception &e)
+    {}
+
+    try {
+        C &c = dynamic_cast<C&> (p);
+        std::cout << c.getType() << std::endl;
+    } catch (std::exception &e)
+    {}
 }
 
 int main(void)

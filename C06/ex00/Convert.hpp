@@ -16,6 +16,8 @@ private:
     bool    _nan;
     bool    _inf;
     bool    _imp;
+    bool    _infp;
+    bool    _infm;
 public:
     Convert(char *str);
     Convert(const Convert& dummy);
