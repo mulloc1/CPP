@@ -1,23 +1,26 @@
 #include <iostream>
 #include "iter.hpp"
 
-void add(int *num)
+void display(int &num)
 {
-    *num += 1;
+    std::cout << "var = " <<  num << std::endl;
+}
+
+void display(const int &num)
+{
+    std::cout << "var = " << num << std::endl;
 }
 
 int main(void)
 {
-    int arr[5] = { 1, 2, 3, 4, 5 };
+    int *arr = new int[5];
 
     for (int i = 0; i < 5; i++)
-        std::cout << arr[i] << " ";
-    std::cout << std::endl;
+        arr[i] = i;
 
-    iter(arr, 5, add);
+    iter(arr, 5, display);
 
-    for (int i = 0; i < 5; i++)
-    std::cout << arr[i] << " ";
-    std::cout << std::endl;
+    const int arr2[5] = {0, 1, 2, 3, 4};
+    iter(arr2, 5, display);
     return (0);
 }
