@@ -5,9 +5,10 @@
 # include <iostream>
 
 template <typename T>
-typename T::iterator easyfind(T container, int element)
+bool easyfind(T container, int element)
 {
-    return (std::find(container.begin(), container.end(), element));
+    typename T::iterator iter = std::find(container.begin(), container.end(), element);
+    return *iter == element;
 }
 
 #endif

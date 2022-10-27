@@ -10,16 +10,6 @@ class MutantStack : public std::stack<T>
 public:
     MutantStack() {}
     virtual ~MutantStack() {}
-    MutantStack(const MutantStack &dummy) 
-    {
-        *this = dummy;
-    }
-
-    MutantStack<T>& operator = (const MutantStack<T> &dummy) 
-    {
-        this->c = dummy.c;
-        return (*this);
-    }
 
     typedef typename std::stack<T>::container_type::iterator iterator;
 	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
