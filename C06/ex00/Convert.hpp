@@ -11,10 +11,13 @@ class Convert
 private:
     double  _dataD;
     float   _dataF;
-    int     _dataI;
-    char    _dataC;
-    bool     _nan;
-    bool     _inf;
+    long    _dataI;
+    int     _dataC;
+    bool    _nan;
+    bool    _inf;
+    bool    _imp;
+    bool    _infp;
+    bool    _infm;
 public:
     Convert(char *str);
     Convert(const Convert& dummy);

@@ -1,12 +1,20 @@
 #ifndef B_HPP
 # define B_HPP
 
-#include "Base.hpp"
+# include "Base.hpp"
+# include <iostream>
 
 class B : public Base
 {
+private :
+    std::string _type;
 public:
-    virtual ~B() {};
+    B();
+    virtual ~B();
+
+    std::string getType() const;
 };
+
+std::ostream& operator << (std::ostream& out, const B& b);
 
 #endif

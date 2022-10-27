@@ -8,7 +8,7 @@ class Array
 {
 private:
     T*  _array;
-    int _n;
+    unsigned int _n;
 public:
     Array()
     : _array(nullptr)
@@ -20,7 +20,9 @@ public:
 
     ~Array()
     {
-        delete [] _array;
+        if (this->_array != nullptr)
+            delete [] this->_array;
+        this->_array = nullptr;
     }
 
     Array(const Array& dummy)
@@ -30,14 +32,14 @@ public:
 
     Array& operator = (const Array& dummy)
     {
-        _array = new T[dummy._n];
-        _n = dummy._n;
-        for (int i = 0; i < _n; i++)
-            _array[i] = dummy._array[i];
+        this->_array = new T[dummy._n];
+        this->_n = dummy._n;
+        for (unsigned int i = 0; i < this->_n; i++)
+            this->_array[i] = dummy._array[i];
         return (*this);
     }
 
-    class GradeTooHighException : public std::exception
+    class GradeInvalIndexException : public std::exception
     {
     public:
         const char* what() const throw()
@@ -46,21 +48,14 @@ public:
         }
     };
 
-    T& operator [] (int idx)
+    T& operator [] (unsigned int idx)
     {
-        if (_array == nullptr || idx >= _n || idx < 0)
-            throw GradeTooHighException();
-        return (_array[idx]);
+        if (this->_array == nullptr || idx >= _n || idx < 0)
+            throw GradeInvalIndexException();
+        return (this->_array[idx]);
     }
 
-    T operator [] (int idx) const
-    {
-        if (_array == nullptr || idx >= _n || idx < 0)
-            throw GradeTooHighException();
-        return (_array[idx]);
-    }
-
-    int& size() const 
+    const int& size() const 
     {
         return (_n);
     }

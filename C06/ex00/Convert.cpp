@@ -21,27 +21,35 @@ bool isChar(char *str) {
 }
 
 bool isString(char *str) {
-    if (std::atoi(str))
-        return false;
     std::string string = static_cast<std::string> (str);
+    if (std::atoi(str) || !string.find("nan", 0) || !string.find("inf", 0) || !string.find("+inf", 0) || !string.find("-inf", 0))
+        return false;
+    int cnt = 0;
     for (unsigned long i = 0; i < string.size(); i++)
     {
         char c = string.at(i);
-        if (!(c >= '0' && c <= '9'))
-            return false;
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+            if (++cnt >= 2)
+                return true;
     }
-    return true;
+    return false;
 }
 
 Convert::Convert(char *str)
-: _nan(false), _inf(false)
+: _nan(false), _inf(false), _infp(false), _infm(false)
 {
     std::string string = static_cast<std::string> (str);
     if (!string.find("nan", 0))
         this->_nan = true;
     else if (!string.find("inf", 0))
         this->_inf = true;
-    if (isChar(str)) 
+    else if (!string.find("+inf", 0))
+        this->_infp = true;
+    else if (!string.find("-inf", 0))
+        this->_infm = true;
+    else if (::isString(str))
+        this->_imp = true;
+    if (::isChar(str)) 
     {
         char c = string.at(0);
         _dataD = static_cast<double> (c);
@@ -53,7 +61,7 @@ Convert::Convert(char *str)
     {
         _dataD = std::atof(str);
         _dataF = static_cast<float> (std::atof(str));
-        _dataI = std::atoi(str);
+        _dataI = std::atol(str);
         _dataC = std::atoi(str);
     }
 }
@@ -80,10 +88,10 @@ Convert& Convert::operator = (const Convert& dummy)
 void Convert::printChar()
 {
     std::cout << "char: ";
-    if (this->_nan || this->_inf || flowCheck(this->_dataC, CHAR_MAX, CHAR_MIN))
+    if (this->_nan || this->_inf || this->_imp || this->_infp || this->_infm || flowCheck(this->_dataC, CHAR_MAX, CHAR_MIN))
         std::cout << "impossible" << std::endl;
     else if (this->_dataC >= ' ')
-        std::cout << "'" << this->_dataC << "'" << std::endl;
+        std::cout << "'" << static_cast<char> (this->_dataC) << "'" << std::endl;
     else
         std::cout << "Non displayable" << std::endl;
 }
@@ -91,7 +99,7 @@ void Convert::printChar()
 void Convert::printInt()
 {
     std::cout << "int: ";
-    if (this->_nan || this->_inf || flowCheck(this->_dataI, INT_MAX, INT_MIN))
+    if (this->_nan || this->_inf || this->_imp || this->_infp || this->_infm || flowCheck(this->_dataI, INT_MAX, INT_MIN))
         std::cout << "impossible" << std::endl;
     else
         std::cout << this->_dataI << std::endl;
@@ -100,13 +108,22 @@ void Convert::printInt()
 void Convert::printFloat()
 {
     std::cout << "float: ";
-    if (this->_nan == true)
+    if (this->_nan)
         std::cout << "nan";
-    else if (this->_inf == true)
+    else if (this->_inf)
         std::cout << "inf";
+    else if (this->_infp)
+        std::cout << "+inf";
+    else if (this->_infm)
+        std::cout << "-inf";
+    else if (this->_imp)
+    {
+        std::cout << "impossible" << std::endl;
+        return ;
+    }
     else
         std::cout << this->_dataF;
-    if (this->_dataF - static_cast <int> (this->_dataF) == 0 && this->_nan == false && this->_inf == false)
+    if (this->_dataF - static_cast <int> (this->_dataF) == 0 && !this->_nan && !this->_inf && !this->_imp)
         std::cout << ".0";
     std::cout << "f" << std::endl;
 }
@@ -114,13 +131,22 @@ void Convert::printFloat()
 void Convert::printDouble()
 {
     std::cout << "double: ";
-    if (this->_nan == true)
+    if (this->_nan)
         std::cout << "nan";
-    else if (this->_inf == true)
+    else if (this->_inf)
         std::cout << "inf";
+    else if (this->_infp)
+        std::cout << "+inf";
+    else if (this->_infm)
+        std::cout << "-inf";
+    else if (this->_imp)
+    {
+        std::cout << "impossible" << std::endl;;
+        return ;
+    }
     else
         std::cout << this->_dataD;
-    if (this->_dataD - static_cast <long> (this->_dataD) == 0 && this->_nan == false && this->_inf == false)
+    if (this->_dataD - static_cast <long> (this->_dataD) == 0 && !this->_nan && !this->_inf && !this->_imp)
         std::cout << ".0";
     std::cout << std::endl;
 }
