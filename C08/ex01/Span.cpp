@@ -1,71 +1,67 @@
 #include "Span.hpp"
+#include <exception>
+#include <cstdlib>
+#include <iterator>
+#include <algorithm>
+#include <iostream>
 
-Span::Span(const unsigned int& n)
-: _n(n)
+Span::Span(unsigned int n): _size(n), _vec(0)
 {
-    std::cout << "Span constructor called" << std::endl;
+}
+
+Span::Span(const Span &src)
+{
+	*this = src;
 }
 
 Span::~Span()
+{}
+
+Span &Span::operator=(const Span &src)
 {
-    std::cout << "Span destructor callled" << std::endl;
+	if (this == &src)
+		return (*this);
+	_size = src._size;
+	_vec = src._vec;
+	return (*this);
 }
 
-Span::Span(const Span& dummy)
+void Span::addNumber(int n)
 {
-    *this = dummy;
+	if (_vec.size() == _size)
+		throw std::out_of_range("vector is full");
+	_vec.push_back(n);
 }
 
-Span& Span::operator = (const Span& dummy)
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-    this->_span = dummy._span;
-    this->_n = dummy._n;
-    return (*this);
+	std::vector<int> tmp(begin, end);
+	if (tmp.size() >= (_size - _vec.size()))
+		throw std::out_of_range("range is too big for the space left");
+	copy(tmp.begin(), tmp.end(), std::back_inserter(_vec));
 }
 
-void    Span::addNumber(const int& element) // 이미 존재하는 값이면 throw, 사이즈를 넘어도 throw
+int	Span::shortestSpan() const
 {
-    if (element == *easyfind(this->_span, element))
-        throw Span::alreadyExist();
-    if (this->_span.size() == this->_n)
-        throw Span::isFull();
-    this->_span.insert(element);
+	int res;
+	std::vector<int> tmp = _vec;
+	if (_vec.size() < 2)
+		throw std::logic_error("Need at least 2 numbers in the vector");
+	sort(tmp.begin(), tmp.end());
+	res = (tmp[1] - tmp[0]);
+	for (std::vector<int>::iterator it = tmp.begin() + 1; it < tmp.end() - 1; it++)
+	{
+		if (*(it + 1) - *it < res)
+			res = *(it + 1) - *it;
+	}
+	return (res);
 }
 
-int    Span::shortestSpan()
+int	Span::longestSpan() const
 {
-    int shortest;
-    std::multiset<int, std::greater<int> >::iterator begin;
-    std::multiset<int, std::greater<int> >::iterator next;
-
-    shortest = 214743647;
-    for (unsigned int i = 0; i < this->_n - 1; i++)
-    {
-        begin = std::next(this->_span.begin(), i);
-        for (unsigned int j = i + 1; j < this->_n; j++)
-        {
-            next = std::next(this->_span.begin(), j);
-            if (*begin - *next < shortest)
-                shortest = *begin - *next;
-        }
-    }
-    return (shortest);
-}
-
-int    Span::longestSpan()
-{
-    std::multiset<int, std::greater<int> >::iterator begin = this->_span.begin();
-    std::multiset<int, std::greater<int> >::iterator end = this->_span.end();
-
-    return (*begin - *(std::next(end, -1)));
-}
-
-const char* Span::alreadyExist::what() const throw()
-{
-    return "already Exist";
-}
-
-const char* Span::isFull::what() const throw()
-{
-    return "is Full";
+	std::vector<int> tmp = _vec;
+	if (_vec.size() <= 1)
+		throw std::logic_error("Need at least 2 numbers in the vector");
+	sort(tmp.begin(), tmp.end());
+	return (*(tmp.end() - 1) - *tmp.begin());
 }

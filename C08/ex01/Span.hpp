@@ -1,42 +1,27 @@
 #ifndef SPAN_HPP
-# define SPAN_HPP
-
-# include <algorithm>
-# include <iostream>
-# include <exception>
-# include <set>
-
-template <typename T>
-typename T::iterator easyfind(T container, int element)
-{
-    return (std::find(container.begin(), container.end(), element));
-}
+#define SPAN_HPP
+#include <vector>
+#include <iostream>
 
 class Span
 {
-private:
-    std::multiset<int, std::greater<int> > _span;
-    unsigned int                _n;
-public:
-    explicit Span(const unsigned int& n);
-    ~Span();
-    Span(const Span& dummy);
-    Span& operator = (const Span& dummy);
-    void    addNumber(const int& element);
-    int     shortestSpan();
-    int     longestSpan();
+    private:
+		unsigned int _size;
+		std::vector<int> _vec;
+		Span();
 
-    class alreadyExist : public std::exception
-    {
-    public:
-        const char* what() const throw();
-    };
+	public:
+		Span(unsigned int size);
+		Span(const Span &span);
+		~Span();
 
-    class isFull : public std::exception
-    {
-    public:
-        const char* what() const throw();
-    };
+		Span &operator=(const Span &span);
+	
+		void addNumber(int n);
+		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+
+		int shortestSpan() const;
+		int longestSpan() const;
 };
 
 #endif
